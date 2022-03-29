@@ -8,13 +8,14 @@ import (
 )
 
 func main() {
+	commonConfig := config.MustGetConfig("common")
 	xmuDailyReportConfigHandler := service.NewXmuDailyReportConfigHandler(config.MustGetConfig("xmu-daily-report"))
 
 	r := gin.Default()
 	r.GET("/api/v1/dataserver/xmu-daily-report-config", xmuDailyReportConfigHandler.Handle)
 
 	log.Infoln("application running")
-	err := r.Run(":8080")
+	err := r.Run(":" + commonConfig.MustString("port"))
 	if err != nil {
 		log.WithError(err).Errorln("fail to run application")
 	}
