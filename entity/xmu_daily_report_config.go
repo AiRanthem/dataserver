@@ -14,6 +14,7 @@ const (
 type XmuDailyReportConfig struct {
 	gorm.Model
 	Type   contentType
+	Name   string
 	Key    string
 	Values string
 }

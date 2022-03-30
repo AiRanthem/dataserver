@@ -2,6 +2,7 @@ package main
 
 import (
 	"data-pusher/config"
+	"data-pusher/middleware"
 	"data-pusher/service"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
@@ -12,6 +13,7 @@ func main() {
 	xmuDailyReportConfigHandler := service.NewXmuDailyReportConfigHandler(config.MustGetConfig("xmu-daily-report"))
 
 	r := gin.Default()
+	r.Use(middleware.Cors())
 	r.GET("/api/v1/dataserver/xmu-daily-report-config", xmuDailyReportConfigHandler.Handle)
 
 	log.Infoln("application running")

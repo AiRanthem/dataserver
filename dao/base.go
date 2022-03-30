@@ -12,6 +12,10 @@ type dbAccess struct {
 	db *gorm.DB
 }
 
+func (d *dbAccess) DB() *gorm.DB {
+	return d.db
+}
+
 func SQLite(dsn string, target any) *dbAccess {
 	db, err := gorm.Open(sqlite.Open(dsn), &gorm.Config{})
 	if err != nil {

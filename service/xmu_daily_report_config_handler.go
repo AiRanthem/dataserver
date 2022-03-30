@@ -28,13 +28,13 @@ func (h *XmuDailyReportConfigHandler) Handle(ctx *gin.Context) {
 	})
 }
 
-func NewXmuDailyReportConfigHandler(config config.Config) *XmuDailyReportConfigHandler {
+func NewXmuDailyReportConfigHandler(c config.Config) *XmuDailyReportConfigHandler {
 	return &XmuDailyReportConfigHandler{
 		xmuDailyReportConfigDao: dao.NewXmuDailyReportConfigDao(
-			config.MustString("mysql-user"),
-			config.MustString("mysql-passwd"),
-			config.MustString("mysql-ip"),
-			config.MustInt("mysql-port"),
-			config.MustString("mysql-db")),
+			c.MustString("mysql-user"),
+			c.MustString("mysql-passwd"),
+			c.MustString("mysql-ip"),
+			c.MustInt("mysql-port"),
+			c.MustString("mysql-db")),
 	}
 }
