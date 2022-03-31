@@ -18,6 +18,7 @@ func (h *XmuDailyReportConfigHandler) Handle(ctx *gin.Context) {
 	var data []gin.H
 	for _, entity := range all {
 		data = append(data, gin.H{
+			"name":   entity.Name,
 			"type":   entity.Type,
 			"key":    entity.Key,
 			"values": entity.Values,
