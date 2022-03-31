@@ -3,6 +3,7 @@ module data-pusher
 require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/sirupsen/logrus v1.8.1
+	github.com/unrolled/secure v1.10.0
 	gopkg.in/ini.v1 v1.66.4
 	gorm.io/driver/mysql v1.3.2
 	gorm.io/driver/sqlite v1.3.1

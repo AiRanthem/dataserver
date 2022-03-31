@@ -3,6 +3,8 @@ package service
 import (
 	"data-pusher/config"
 	"data-pusher/dao"
+	"data-pusher/enums"
+	"data-pusher/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -22,10 +24,7 @@ func (h *XmuDailyReportConfigHandler) Handle(ctx *gin.Context) {
 		})
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{
-		"error": 0,
-		"data":  data,
-	})
+	ctx.JSON(http.StatusOK, utils.Response(enums.StatusOk, data))
 }
 
 func NewXmuDailyReportConfigHandler(c config.Config) *XmuDailyReportConfigHandler {

@@ -37,14 +37,14 @@ type SectionHandler func(sec *ini.Section)
 
 type KeyParser func(sec *ini.Section, key string) any
 
-var ConfigMap = make(map[string]Config)
+var ConfMap = make(map[string]Config)
 
 var HandlerMap = map[string]SectionHandler{
 	"xmu-daily-report": func(sec *ini.Section) {
 		c := make(Config)
 		AllStringHandlerUtil(sec, c, "mysql-ip", "mysql-db", "mysql-user", "mysql-passwd")
 		AllIntHandlerUtil(sec, c, "mysql-port")
-		ConfigMap[sec.Name()] = c
+		ConfMap[sec.Name()] = c
 	},
 }
 
@@ -80,11 +80,11 @@ func AllIntHandlerUtil(sec *ini.Section, c Config, keys ...string) {
 func CommonSectionHancler(sec *ini.Section) {
 	c := make(Config)
 	AllStringHandlerUtil(sec, c, sec.KeyStrings()...)
-	ConfigMap[sec.Name()] = c
+	ConfMap[sec.Name()] = c
 }
 
 func MustGetConfig(sec string) Config {
-	config, ok := ConfigMap[sec]
+	config, ok := ConfMap[sec]
 	if !ok {
 		log.WithField("section", sec).Fatalln("try to load a config not exist")
 	}

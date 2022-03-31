@@ -6,7 +6,7 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 BINARY_NAME=dataserver
-VERSION=1.0.1
+VERSION=1.0.2
 
 all: build docker
 

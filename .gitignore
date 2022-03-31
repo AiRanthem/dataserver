@@ -98,3 +98,8 @@ gen
 *.db
 dataserver
 config.ini
+exclude
+*.csr
+*.key
+*.crt
+*.pem
